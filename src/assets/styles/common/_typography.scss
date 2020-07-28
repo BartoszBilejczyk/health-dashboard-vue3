@@ -1,0 +1,53 @@
+body {
+  font-feature-settings: 'cv05' on;
+}
+
+.heading {
+  @include font-weight(700);
+  color: $color-copy--dark;
+
+  &--primary {
+    $size: 20;
+    @include font-size($size);
+    line-height: calc(#{$size}px + #{$ui-default-measure});
+    margin-bottom: $ui-default-measure3x;
+  }
+}
+
+.copy {
+  $size: 15;
+  @include font($size, 400);
+  line-height: calc(#{$size}px + #{$ui-default-measure});
+  color: $color-copy--dark;
+  margin: 0;
+
+  &--large {
+    $size: 17;
+    @include font($size);
+    line-height: calc(#{$size}px + #{$ui-default-measure});
+  }
+
+  &--small {
+    $size: 13;
+    @include font($size);
+    line-height: calc(#{$size}px + #{$ui-default-measure});
+  }
+
+  &--x-small {
+    $size: 10;
+    @include font($size);
+    line-height: calc(#{$size}px + #{$ui-default-measure});
+  }
+
+  &--light {
+    color: $color-copy--light;
+  }
+
+  &--bold {
+    @include font-weight(700);
+  }
+
+  &--gray {
+    color: $color-gray;
+  }
+}

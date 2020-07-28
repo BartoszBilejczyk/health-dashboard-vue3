@@ -1,0 +1,63 @@
+@mixin center($horizontal: -50%, $vertical: -50%) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(#{$horizontal}, #{$vertical})
+}
+
+@mixin font-weight($font-weight) {
+  font-family: 'CircularStd', sans-serif;
+  font-style: normal;
+  font-weight: $font-weight;
+}
+
+@mixin font-size($value: 16) {
+  font-size: $value + px;
+}
+
+@mixin font($font-size: 16, $font-weight: 400) {
+  @include font-size($font-size);
+  @include font-weight($font-weight);
+}
+
+@mixin font-circularstd() {
+  font-family: 'CircularStd', sans-serif;
+}
+
+// based on https://material.io/design/layout/responsive-layout-grid.html#breakpoints
+// values are a little bit smaller to provide for not fully scaled browser windows.
+$xs-breakpoint: 600px;
+$sm-breakpoint: 1024px;
+$md-breakpoint: 1152px;
+$lg-breakpoint: 1440px;
+$xl-breakpoint: 1900px;
+
+@mixin xs-up {
+  @media screen and (min-width: $xs-breakpoint) {
+    @content;
+  }
+}
+
+@mixin sm-up {
+  @media screen and (min-width: $sm-breakpoint) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media screen and (min-width: $md-breakpoint) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media screen and (min-width: $lg-breakpoint) {
+    @content;
+  }
+}
+
+@mixin xl-up {
+  @media screen and (min-width: $xl-breakpoint) {
+    @content;
+  }
+}

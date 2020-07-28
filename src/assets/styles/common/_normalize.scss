@@ -1,0 +1,63 @@
+html, body, div, span, applet, object, iframe, blockquote, pre, abbr, acronym,
+address, big, cite, code,del, dfn, font, ins, kbd, q, s, samp, small, strike,
+sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+  line-height: normal;
+  @include font-circularstd();
+}
+p {
+  margin-top: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a,
+a h1, a h2, a h3, a h4, a h5,
+input[type='submit'],
+a img,
+a {
+  text-decoration: none;
+  transition:all .3s ease;
+  position: relative;
+  color: inherit;
+}
+
+a:focus,
+a:active,
+a:hover {
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+a.non-relative {
+  position: initial
+}
+
+html {
+  font-size: 16px;
+}
+
+html, body {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+input, textarea {
+  font-family: 'Inter', sans-serif !important;
+}
