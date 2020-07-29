@@ -17,7 +17,7 @@ export const appointmentsMock = [
   {
     id: 1,
     // date: new Date(),
-    date: '22/07/2018, 2:30 PM',
+    date: '22/07/2020, 2:30 PM',
     status: null,
     doctor: {
       photo: 'user',
@@ -28,7 +28,7 @@ export const appointmentsMock = [
   {
     id: 2,
     // date: new Date(),
-    date: '25/07/2018, 4:30 PM',
+    date: '25/07/2020, 4:30 PM',
     status: null,
     doctor: {
       photo: 'user',
@@ -59,21 +59,21 @@ export const prescriptionsMock = [
     name: 'Aspirin',
     pillSize: '100mg',
     dosage: 'Once per day in the morning',
-    end: '25/07/2018'
+    end: '25/07/2020'
   },
   {
     id: 2,
     name: 'Vitamin D',
     pillSize: '3mg',
     dosage: 'Once per day in the morning',
-    end: '31/07/2018'
+    end: '31/07/2020'
   },
   {
     id: 3,
     name: 'Vitamin C',
     pillSize: '100mg',
     dosage: '2x per day',
-    end: '31/07/2018'
+    end: '31/07/2020'
   }
 ]
 
@@ -82,31 +82,31 @@ export const notificationsMock = [
     id: 1,
     type: 'info',
     message: 'You booked a visit to dermatologist',
-    date: '31/07/2018'
+    date: '31/07/2020'
   },
   {
     id: 2,
     type: 'action',
     message: 'Dr. John Smith cancelled your visit',
-    date: '30/07/2018'
+    date: '30/07/2020'
   },
   {
     id: 3,
     type: 'info',
     message: 'Your results are available to download',
-    date: '29/07/2018'
+    date: '29/07/2020'
   },
   {
     id: 4,
     type: 'action',
     message: 'Dr. Ann Doe changed date of your visit',
-    date: '28/07/2018'
+    date: '28/07/2020'
   },
   {
     id: 5,
     type: 'neutral',
     message: 'You changed date of appointment',
-    date: '28/07/2018'
+    date: '28/07/2020'
   }
 ]
 
