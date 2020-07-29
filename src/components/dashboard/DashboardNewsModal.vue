@@ -1,42 +1,37 @@
 <template>
   <div class="modal-content dashboard-news-modal">
-    <p class="copy copy--bold">
-      {{ data.title }}
-    </p>
-    <p class="copy copy--gray copy--small">
-      {{ data.fullDescription }}
-    </p>
-    <BaseButton @click="$emit('close')">
-      Close information
-    </BaseButton>
+    <DashboardNewsModalContent
+      :data="data"
+      @close="$emit('close')"
+    />
   </div>
 </template>
 
 <script>
-  import BaseButton from '../common/BaseButton';
+import DashboardNewsModalContent from '@/components/dashboard/DashboardNewsModalContent';
 
-  export default {
-    name: 'DashboardNewsModal',
-    props: {
-      data: {
-        type: Object,
-        default: () => ({})
-      }
-    },
-    components: {
-      BaseButton
+export default {
+  name: 'DashboardNewsModal',
+  components: {
+    DashboardNewsModalContent
+  },
+  props: {
+    data: {
+      type: Object,
+      default: () => ({})
     }
   }
+}
 </script>
 
-<style scoped lang="scss">
-  .dashboard-news-modal {
-    > * {
-      margin-bottom: $ui-default-measure2x;
-    }
-
-    button {
-      margin: $ui-default-measure2x auto 0;
-    }
+<style lang="scss">
+.dashboard-news-modal {
+  > * {
+    margin-bottom: $ui-default-measure2x;
   }
+
+  button {
+    margin: $ui-default-measure2x auto 0;
+  }
+}
 </style>
