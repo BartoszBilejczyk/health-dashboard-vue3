@@ -1,14 +1,14 @@
 export const resultsDataMock = {
   glucose: {
     '2020': {
-      july: Array.from({length: 31}, () => Math.random() * (120 - 90) + 90),
-      august: Array.from({length: 31}, () => Math.random() * (120 - 90) + 90)
+      july: Array.from({length: 31}, () => Math.floor(Math.random() * (120 - 90) + 90)),
+      august: Array.from({length: 31}, () => Math.floor(Math.random() * (120 - 90) + 90))
     }
   },
   weight: {
     '2020': {
-      july: Array.from({length: 31}, () => Math.random() * (59 - 58) + 58),
-      august: Array.from({length: 31}, () => Math.random() * (58 - 57) + 57)
+      july: Array.from({length: 31}, () => (Math.random() * (59 - 58) + 58).toFixed(1)),
+      august: Array.from({length: 31}, () => (Math.random() * (58 - 57) + 58).toFixed(1))
     }
   }
 }

@@ -4,9 +4,10 @@
       City
     </label>
     <select
-      v-model="state.city"
+      :value="city"
       id="city"
       class="form-field"
+      @change="updateValue($event.target.value, 'city')"
     >
       <option
         v-for="option in state.cities"
@@ -20,9 +21,10 @@
       Specialty
     </label>
     <select
-      v-model="state.specialty"
+      :value="specialty"
       id="specialty"
       class="form-field"
+      @change="updateValue($event.target.value, 'specialty')"
     >
       <option
         v-for="option in state.specialties"
@@ -39,10 +41,11 @@
       Doctor
     </label>
     <select
-      :disabled="!state.specialty || !state.city"
-      v-model="state.name"
+      :disabled="!specialty || !city"
+      :value="name"
       id="name"
       class="form-field"
+      @change="updateValue($event.target.value, 'name')"
     >
       <option
         v-for="option in specialtyDoctors"
@@ -59,7 +62,8 @@
       class="form-field"
       type="date"
       id="date"
-      v-model="state.date"
+      :value="date"
+      @change="updateValue($event.target.value, 'date')"
     >
     <BaseButton
       :small="true"
@@ -68,8 +72,8 @@
       Close
     </BaseButton>
     <BaseButton
-      :disabled="!state.city || !state.specialty || !state.name || !state.date"
-      @click="$emit('submit', {specialty: state.specialty, name: state.name, date: state.date})"
+      :disabled="!city || !specialty || !name || !date"
+      @click="$emit('submit')"
     >
       Submit
     </BaseButton>
@@ -87,24 +91,43 @@
     components: {
       BaseButton
     },
-    setup() {
+    props: {
+      city: {
+        type: String,
+        default: null
+      },
+      specialty: {
+        type: String,
+        default: null
+      },
+      name: {
+        type: String,
+        default: null
+      },
+      date: {
+        type: String,
+        default: null
+      }
+    },
+    setup(props, {emit}) {
       const state = reactive({
-        city: null,
-        specialty: null,
-        name: null,
-        date: null,
         cities: appointmentModalMocks.cities,
         doctors: appointmentModalMocks.doctors,
         specialties: appointmentModalMocks.specialties,
       });
 
       const specialtyDoctors = computed(() => {
-        return state.doctors.filter(doc => doc.specialty === state.specialty && doc.city === state.city)
+        return state.doctors.filter(doc => doc.specialty === props.specialty && doc.city === props.city)
       });
+
+      function updateValue(value, key) {
+        emit(`update:${key}`, value)
+      }
 
       return {
         state,
         specialtyDoctors,
+        updateValue
       }
     }
   }

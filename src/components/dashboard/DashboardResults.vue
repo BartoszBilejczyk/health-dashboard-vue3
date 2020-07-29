@@ -1,12 +1,15 @@
 <template>
-  <div class="dashboard-results">
-    <DashboardResultsChart :data="data"></DashboardResultsChart>
+  <div>
+    <!-- <DashboardResultsChart :data="data"></DashboardResultsChart>-->
+    <p class="copy">
+      Chart Results are only available in Vue 2 app because vue-chartjs is not compatible with Vue 3
+    </p>
     <div class="dashboard-results__nav">
       <div class="dashboard-results-month">
         <select
-          class="form-field form-field-no-border"
-          :value="month"
-          @change="$emit('change-month', $event.target.value)">
+            class="form-field form-field-no-border"
+            :value="month"
+            @change="$emit('change-month', $event.target.value)">
           <option value="july">
             July
           </option>
@@ -19,7 +22,8 @@
         <select
           class="form-field form-field-no-border"
           :value="type"
-          @change="$emit('change-type', $event.target.value)">
+          @change="$emit('change-type', $event.target.value)"
+        >
           <option value="glucose">
             Glucose
           </option>
@@ -33,13 +37,8 @@
 </template>
 
 <script>
-  import DashboardResultsChart from './DashboardResultsChart';
-
   export default {
     name: 'DashboardResults',
-    components: {
-      DashboardResultsChart
-    },
     props: {
       data: {
         type: Array,

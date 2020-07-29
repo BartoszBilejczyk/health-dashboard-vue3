@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-data">
+  <div class="dashboard-appointments">
     <BaseAppointment
       v-for="appointment in data"
       :key="appointment.id"

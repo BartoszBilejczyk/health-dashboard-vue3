@@ -4,21 +4,23 @@
       class="app__header"
       @submit-appointment="appointments.handleSubmitAppointment"
     ></AppHeader>
-    <div
-      v-if="news.modalOpen"
-      class="modal"
-    >
-      <DashboardNewsModal
-        :data="news.activeNews"
-        @close="news.handleCloseNewsModal"
-      />
-    </div>
+    <Teleport to="#news-modal">
+      <div
+        v-if="news.modalOpen"
+        class="modal"
+      >
+        <DashboardNewsModal
+          :data="news.activeNews"
+          @close="news.handleCloseNewsModal"
+        />
+      </div>
+    </Teleport>
     <div class="dashboard__upper">
       <BaseBox title="Upcoming appointments">
         <DashboardAppointments
-            :data="appointments.state.list"
-            @confirm="appointments.handleChangeAppointmentStatus($event, 'confirmed')"
-            @reject="appointments.handleChangeAppointmentStatus($event, 'rejected')"
+          :data="appointments.state.list"
+          @confirm="appointments.handleChangeAppointmentStatus($event, 'confirmed')"
+          @reject="appointments.handleChangeAppointmentStatus($event, 'rejected')"
         ></DashboardAppointments>
       </BaseBox>
       <BaseBox title="Recent results">
@@ -82,11 +84,11 @@
       AppHeader
     },
     setup() {
-      const appointments = useAppointments();
+      const notifications = useNotifications();
+      const appointments = useAppointments(notifications);
       const results = useResults();
       const news = useNews();
       const prescriptions = usePrescriptions();
-      const notifications = useNotifications();
 
       return {
         appointments,

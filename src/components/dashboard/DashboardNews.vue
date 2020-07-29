@@ -13,7 +13,10 @@
           {{ news.description }}
         </p>
       </div>
-      <IconChevronRight @click.native="$emit('open', news)"></IconChevronRight>
+      <IconChevronRight
+        class="clickable"
+        @click.native="$emit('open', news)"
+      ></IconChevronRight>
     </div>
   </div>
 </template>

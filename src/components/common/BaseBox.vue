@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <div class="base-box">
     <h2 class="heading heading--primary">
       {{ title }}

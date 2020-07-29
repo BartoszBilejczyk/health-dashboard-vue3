@@ -8,7 +8,7 @@ import {
   newsMock
 } from '@/mocks/mocks';
 
-export const useAppointments = () => {
+export const useAppointments = (notifications) => {
   const state = reactive({
     list: appointmentsMock
   })
@@ -26,15 +26,14 @@ export const useAppointments = () => {
     ]
 
     if (status === 'rejected') {
-      useNotifications().addNotification('action', `You rejected the appointment with ${state.list[index].doctor.name}, ${state.list[index].doctor.specialty}`)
+      notifications.addNotification('action', `You rejected the appointment with ${state.list[index].doctor.name}, ${state.list[index].doctor.specialty}`)
 
     } else {
-      useNotifications().addNotification('info', `You confirmed the appointment with ${state.list[index].doctor.name}, ${state.list[index].doctor.specialty}`)
+      notifications.addNotification('info', `You confirmed the appointment with ${state.list[index].doctor.name}, ${state.list[index].doctor.specialty}`)
     }
   }
 
   function handleSubmitAppointment({specialty, name, date}) {
-    console.log('elo')
     state.list = [
       {
         id: state.list.length + 1,
@@ -49,7 +48,7 @@ export const useAppointments = () => {
       ...state.list
     ]
 
-    useNotifications().addNotification('action', `You made an appointment with ${name}, ${specialty}`)
+    notifications.addNotification('action', `You made an appointment with ${name}, ${specialty}`)
   }
 
   return {

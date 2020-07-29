@@ -24,7 +24,7 @@
         </p>
         <p
           @click="$emit('dismiss', notification.id)"
-          class="copy copy--gray copy--small dashboard-notifications__item-dismiss"
+          class="copy copy--gray copy--small clickable"
         >
           Dismiss
         </p>
@@ -84,10 +84,6 @@
           background-color: #16c08f;
           box-shadow: 0 2px 8px 0 rgba(22, 192, 143, 0.56);
         }
-      }
-
-      &-dismiss {
-        cursor: pointer;
       }
     }
   }

@@ -1,40 +1,49 @@
 <template>
   <header class="app-header">
-    <div
-      v-if="state.modalOpen"
-      class="modal"
+    <Teleport
+      to="#appointment-modal"
+      :disabled="state.preview"
     >
-    <AppHeaderAppointmentModal
-      @close="handleCloseModal"
-      @submit="handleEmitAppointment"
-    />
-    </div>
+      <div
+        v-if="state.modalOpen"
+        class="modal"
+      >
+        <AppHeaderAppointmentModal
+          v-model:city="city"
+          v-model:specialty="specialty"
+          v-model:name="name"
+          v-model:date="date"
+          @close="handleCloseModal"
+          @submit="handleEmitAppointment"
+        />
+      </div>
+    </Teleport>
     <BaseButton @click="handleOpenAppointmentModal">
       Make an appointment
     </BaseButton>
+    <div>
+      <BaseButton
+        :small="true"
+        @click="handleTogglePreview"
+      >
+        Toggle preview only mode to enable/disable Teleport in Make an appointment
+      </BaseButton>
+      Preview: {{ state.preview ? 'Yes' : 'No' }}
+    </div>
     <div class="app-header__user">
-      <img :src="require('../assets/images/user.png')" alt="User image">
+      <img :src="state.user.photo" alt="User image">
       <span>
-        Maria Waters
+        {{ state.user.name }}
       </span>
     </div>
   </header>
 </template>
 
-<script lang="ts">
-  import { reactive } from 'vue';
+<script>
+  import { reactive, ref } from 'vue';
   import AppHeaderAppointmentModal from './AppHeaderAppointmentModal';
   import BaseButton from './common/BaseButton';
-
-  interface Appointment {
-    specialty: String,
-    name: String,
-    date: Date
-  }
-
-  interface State {
-    modalOpen: Boolean
-  }
+  import axios from 'axios';
 
   export default {
     name: 'AppHeader',
@@ -42,10 +51,20 @@
       AppHeaderAppointmentModal,
       BaseButton
     },
-    setup(props, { emit }) {
-      const state = reactive<State>({
-        modalOpen: false
+    async setup(props, { emit }) {
+      const state = reactive({
+        modalOpen: false,
+        preview: false,
+        user: {
+          name: null,
+          photo: null
+        }
       });
+
+      const city = ref(null);
+      const specialty = ref(null);
+      const name = ref(null);
+      const date = ref(null);
 
       function handleCloseModal() {
         state.modalOpen = false;
@@ -55,16 +74,37 @@
         state.modalOpen = true;
       }
 
-      function handleEmitAppointment(data: Appointment) {
-        emit('submit-appointment', data);
+      function handleTogglePreview() {
+        state.preview = !state.preview;
+      }
+
+      function handleEmitAppointment() {
+        emit('submit-appointment', {
+          specialty: specialty.value,
+          name: name.value,
+          date: date.value
+        });
+
         handleCloseModal();
+      }
+
+      const { data } = await axios.get('https://randomuser.me/api/');
+
+      state.user = {
+        photo: data.results[0].picture.thumbnail,
+        name: `${data.results[0].name.first} ${data.results[0].name.last}`
       }
 
       return {
         state,
+        city,
+        specialty,
+        name,
+        date,
         handleCloseModal,
         handleEmitAppointment,
-        handleOpenAppointmentModal
+        handleOpenAppointmentModal,
+        handleTogglePreview
       }
     }
   }
@@ -81,6 +121,10 @@
       height: 56px;
       display: flex;
       align-items: center;
+
+      img {
+        border-radius: $ui-default-border-radius--circle;
+      }
 
       span {
         display: inline-block;
