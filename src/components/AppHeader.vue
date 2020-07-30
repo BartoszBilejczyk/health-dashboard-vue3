@@ -5,7 +5,7 @@
       :disabled="state.preview"
     >
       <div
-        v-if="state.modalOpen"
+        v-if="state.modalOpen && !state.preview"
         class="modal"
       >
         <AppHeaderAppointmentModal
