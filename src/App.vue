@@ -4,9 +4,7 @@
       <template #default>
         <AppNav class="app__nav"></AppNav>
         <main class="app__main">
-          <router-view
-            class="app__router-view"
-          />
+          <router-view class="app__router-view"/>
         </main>
       </template>
       <template #fallback>

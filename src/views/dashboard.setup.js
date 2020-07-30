@@ -8,6 +8,7 @@ import {
   newsMock
 } from '@/mocks/mocks';
 
+
 export const useAppointments = (notifications) => {
   const state = reactive({
     list: appointmentsMock
@@ -58,6 +59,7 @@ export const useAppointments = (notifications) => {
   }
 }
 
+
 export const useResults = () => {
   const resultsData = resultsDataMock;
 
@@ -82,6 +84,7 @@ export const useResults = () => {
     handleChangeType
   }
 }
+
 
 export const useNews = () => {
   const state = reactive({
@@ -110,6 +113,7 @@ export const useNews = () => {
   }
 }
 
+
 export const usePrescriptions = () => {
   const state = reactive({
     list: prescriptionsMock
@@ -119,6 +123,7 @@ export const usePrescriptions = () => {
     state
   }
 }
+
 
 export const useNotifications = () => {
   const state = reactive({
