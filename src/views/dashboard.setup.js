@@ -1,4 +1,4 @@
-import { ref, reactive, computed } from 'vue';
+import { ref, computed } from 'vue';
 
 import {
   resultsDataMock,
@@ -10,34 +10,32 @@ import {
 
 
 export const useAppointments = (notifications) => {
-  const state = reactive({
-    list: appointmentsMock
-  })
+  const list = ref(appointmentsMock);
 
   function handleChangeAppointmentStatus(id, status) {
-    const index = state.list.findIndex(app => app.id === id);
+    const index = list.value.findIndex(app => app.id === id);
 
-    state.list = [
-      ...state.list.slice(0, index),
+    list.value = [
+      ...list.value.slice(0, index),
       {
-        ...state.list[index],
+        ...list.value[index],
         status
       },
-      ...state.list.slice(index + 1)
+      ...list.value.slice(index + 1)
     ]
 
     if (status === 'rejected') {
-      notifications.addNotification('action', `You rejected the appointment with ${state.list[index].doctor.name}, ${state.list[index].doctor.specialty}`)
+      notifications.addNotification('action', `You rejected the appointment with ${list.value[index].doctor.name}, ${list.value[index].doctor.specialty}`)
 
     } else {
-      notifications.addNotification('info', `You confirmed the appointment with ${state.list[index].doctor.name}, ${state.list[index].doctor.specialty}`)
+      notifications.addNotification('info', `You confirmed the appointment with ${list.value[index].doctor.name}, ${list.value[index].doctor.specialty}`)
     }
   }
 
   function handleSubmitAppointment({specialty, name, date}) {
-    state.list = [
+    list.value = [
       {
-        id: state.list.length + 1,
+        id: list.value.length + 1,
         date,
         status: null,
         doctor: {
@@ -46,14 +44,14 @@ export const useAppointments = (notifications) => {
           specialty
         }
       },
-      ...state.list
+      ...list.value
     ]
 
     notifications.addNotification('action', `You made an appointment with ${name}, ${specialty}`)
   }
 
   return {
-    state,
+    list,
     handleChangeAppointmentStatus,
     handleSubmitAppointment
   }
@@ -87,9 +85,7 @@ export const useResults = () => {
 
 
 export const useNews = () => {
-  const state = reactive({
-    list: newsMock
-  });
+  const list = ref(newsMock);
 
   const modalOpen = ref(false);
   const activeNews = ref(null);
@@ -105,7 +101,7 @@ export const useNews = () => {
   }
 
   return {
-    state,
+    list,
     modalOpen,
     activeNews,
     handleCloseNewsModal,
@@ -115,39 +111,35 @@ export const useNews = () => {
 
 
 export const usePrescriptions = () => {
-  const state = reactive({
-    list: prescriptionsMock
-  });
+  const list = ref(prescriptionsMock);
 
   return {
-    state
+    list
   }
 }
 
 
 export const useNotifications = () => {
-  const state = reactive({
-    list: notificationsMock
-  })
+  const list = ref(notificationsMock);
 
   function handleNotificationsDismissal(id) {
-    state.list = state.list.filter(notif => notif.id !== id)
+    list.value = list.value.filter(notif => notif.id !== id)
   }
 
   function addNotification(type, message) {
-    state.list = [
+    list.value = [
       {
-        id: state.list.length + 1,
+        id: list.value.length + 1,
         type,
         message,
         date: '01/08/2020'
       },
-      ...state.list
+      ...list.value
     ]
   }
 
   return {
-    state,
+    list,
     handleNotificationsDismissal,
     addNotification
   }

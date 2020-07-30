@@ -18,7 +18,7 @@
     <div class="dashboard__upper">
       <BaseBox title="Upcoming appointments">
         <DashboardAppointments
-          :data="appointments.state.list"
+          :data="appointments.list"
           @confirm="appointments.handleChangeAppointmentStatus($event, 'confirmed')"
           @reject="appointments.handleChangeAppointmentStatus($event, 'rejected')"
         ></DashboardAppointments>
@@ -36,16 +36,16 @@
     <div class="dashboard__lower">
       <BaseBox title="News">
         <DashboardNews
-            :data="news.state.list"
+            :data="news.list"
             @open="news.handleOpenNewsModal"
         />
       </BaseBox>
       <BaseBox title="Current prescriptions">
-        <DashboardPrescriptions :data="prescriptions.state.list" />
+        <DashboardPrescriptions :data="prescriptions.list" />
       </BaseBox>
       <BaseBox title="Notifications">
         <DashboardNotifications
-            :data="notifications.state.list"
+            :data="notifications.list"
             @dismiss="notifications.handleNotificationsDismissal"
         />
       </BaseBox>
