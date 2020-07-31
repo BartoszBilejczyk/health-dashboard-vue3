@@ -8,6 +8,12 @@ Link to Vue 2 repo https://github.com/BartoszBilejczyk/health-dashboard-vue2
 
 Link to Vue 3 repo with TypeScript https://github.com/BartoszBilejczyk/health-dashboard-vue3-ts
 
+<a href="https://health-dashboard-vue3.netlify.app/" target="_blank">Live demo</a> 
+
+Screenshot:
+<img src="https://github.com/BartoszBilejczyk/health-dashboard-vue3/blob/master/src/assets/images/demo.jpg?raw=true">
+
+
 ## Project setup
 ```
 yarn install
