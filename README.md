@@ -5,6 +5,7 @@ This app was created as a Vue 2 / Vue 3 experiment. I made exactly the same app 
 It's worth mentioning that during writing of this app, I was not able to use TypeScript and decided to leave Vuex out of scope of this app.
 
 Link to Vue 2 repo https://github.com/BartoszBilejczyk/health-dashboard-vue2
+
 Link to Vue 3 repo with TypeScript https://github.com/BartoszBilejczyk/health-dashboard-vue3-ts
 
 ## Project setup
