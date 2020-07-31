@@ -6,11 +6,11 @@
     ></AppHeader>
     <Teleport to="#news-modal">
       <div
-        v-if="news.modalOpen"
+        v-if="news.state.modalOpen"
         class="modal"
       >
         <DashboardNewsModal
-          :data="news.activeNews"
+          :data="news.state.activeNews"
           @close="news.handleCloseNewsModal"
         />
       </div>
@@ -63,13 +63,11 @@
   import DashboardNewsModal from '../components/dashboard/DashboardNewsModal';
   import AppHeader from '@/components/AppHeader.vue';
 
-  import {
-    useAppointments,
-    useResults,
-    useNews,
-    usePrescriptions,
-    useNotifications
-  } from '@/views/dashboard.setup';
+  import { useAppointments } from '@/views/dashboard-appointments.setup';
+  import { useResults } from '@/views/dashboard-results.setup';
+  import { useNews } from '@/views/dashboard-news.setup';
+  import { usePrescriptions } from '@/views/dashboard-prescriptions.setup';
+  import { useNotifications } from '@/views/dashboard-notifications.setup';
 
   export default {
     name: 'Dashboard',

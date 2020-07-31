@@ -10,7 +10,7 @@
       @change="updateValue($event.target.value, 'city')"
     >
       <option
-        v-for="option in state.cities"
+        v-for="option in cities"
         :key="option.value"
         :value="option.value"
       >
@@ -27,7 +27,7 @@
       @change="updateValue($event.target.value, 'specialty')"
     >
       <option
-        v-for="option in state.specialties"
+        v-for="option in specialties"
         :key="option.value"
         :value="option.value"
       >
@@ -81,10 +81,14 @@
 </template>
 
 <script>
-  import { reactive, computed } from 'vue';
+  import { ref, computed } from 'vue';
 
   import BaseButton from './common/BaseButton';
-  import { appointmentModalMocks } from '@/mocks/mocks';
+  import {
+    appointmentModalMockCities,
+    appointmentModalMockDoctors,
+    appointmentModalMockSpecialties
+  } from '@/mocks/mocks';
 
   export default {
     name: 'AppHeaderAppointmentModal',
@@ -110,14 +114,12 @@
       }
     },
     setup(props, {emit}) {
-      const state = reactive({
-        cities: appointmentModalMocks.cities,
-        doctors: appointmentModalMocks.doctors,
-        specialties: appointmentModalMocks.specialties,
-      });
+      const cities = ref(appointmentModalMockCities);
+      const doctors = ref(appointmentModalMockDoctors);
+      const specialties = ref(appointmentModalMockSpecialties);
 
       const specialtyDoctors = computed(() => {
-        return state.doctors.filter(doc => doc.specialty === props.specialty && doc.city === props.city)
+        return doctors.value.filter(doc => doc.specialty === props.specialty && doc.city === props.city)
       });
 
       function updateValue(value, key) {
@@ -125,7 +127,9 @@
       }
 
       return {
-        state,
+        cities,
+        doctors,
+        specialties,
         specialtyDoctors,
         updateValue
       }

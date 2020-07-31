@@ -112,26 +112,26 @@ export const notificationsMock = [
 
 // Appointment Modal
 
-export const appointmentModalMocks = {
-  cities: [
-    { value: 'warsaw', label: 'Warsaw'},
-    { value: 'wroclaw', label: 'Wroclaw'},
-    { value: 'poznan', label: 'Poznan'},
-  ],
-  doctors: [
-    { value: 'dr John Doe', label: 'dr John Doe', specialty: 'dermatologist', city: 'warsaw'},
-    { value: 'dr Jane Smith', label: 'dr Jane Smith', specialty: 'dermatologist', city: 'wroclaw'},
-    { value: 'dr Trevor Wyatt', label: 'dr Trevor Wyatt', specialty: 'dermatologist', city: 'poznan'},
-    { value: 'dr Andrew Milner', label: 'dr Andrew Milner', specialty: 'dentist', city: 'warsaw'},
-    { value: 'dr Alicia Brown', label: 'dr Alicia Brown', specialty: 'dentist', city: 'wroclaw'},
-    { value: 'dr Ellie Rose Lindsay', label: 'dr Ellie Rose Lindsay', specialty: 'dentist', city: 'poznan'},
-    { value: 'dr Alex Davies', label: 'dr Alex Davies', specialty: 'psychologist', city: 'warsaw'},
-    { value: 'dr Patricia Firmino', label: 'dr Patricia Firmino', specialty: 'psychologist', city: 'wroclaw'},
-    { value: 'dr Janine Higgs', label: 'dr Janine Higgs', specialty: 'psychologist', city: 'poznan'}
-  ],
-  specialties: [
-    { value: 'dermatologist', label: 'Dermatologist' },
-    { value: 'dentist', label: 'Dentist' },
-    { value: 'psychologist', label: 'Psychologist' },
-  ]
-}
+export const appointmentModalMockCities = [
+  { value: 'warsaw', label: 'Warsaw'},
+  { value: 'wroclaw', label: 'Wroclaw'},
+  { value: 'poznan', label: 'Poznan'},
+];
+
+export const appointmentModalMockDoctors = [
+  { value: 'dr John Doe', label: 'dr John Doe', specialty: 'dermatologist', city: 'warsaw'},
+  { value: 'dr Jane Smith', label: 'dr Jane Smith', specialty: 'dermatologist', city: 'wroclaw'},
+  { value: 'dr Trevor Wyatt', label: 'dr Trevor Wyatt', specialty: 'dermatologist', city: 'poznan'},
+  { value: 'dr Andrew Milner', label: 'dr Andrew Milner', specialty: 'dentist', city: 'warsaw'},
+  { value: 'dr Alicia Brown', label: 'dr Alicia Brown', specialty: 'dentist', city: 'wroclaw'},
+  { value: 'dr Ellie Rose Lindsay', label: 'dr Ellie Rose Lindsay', specialty: 'dentist', city: 'poznan'},
+  { value: 'dr Alex Davies', label: 'dr Alex Davies', specialty: 'psychologist', city: 'warsaw'},
+  { value: 'dr Patricia Firmino', label: 'dr Patricia Firmino', specialty: 'psychologist', city: 'wroclaw'},
+  { value: 'dr Janine Higgs', label: 'dr Janine Higgs', specialty: 'psychologist', city: 'poznan'}
+];
+
+export const appointmentModalMockSpecialties = [
+  { value: 'dermatologist', label: 'Dermatologist' },
+  { value: 'dentist', label: 'Dentist' },
+  { value: 'psychologist', label: 'Psychologist' },
+]
