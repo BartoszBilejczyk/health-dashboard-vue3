@@ -16,22 +16,20 @@ export const resultsDataMock = {
 export const appointmentsMock = [
   {
     id: 1,
-    // date: new Date(),
     date: '22/07/2020, 2:30 PM',
     status: null,
     doctor: {
-      photo: 'user',
+      photo: 'https://randomuser.me/api/portraits/thumb/women/95.jpg',
       name: 'dr Anthony Wagner',
       specialty: 'dermatologist'
     }
   },
   {
     id: 2,
-    // date: new Date(),
     date: '25/07/2020, 4:30 PM',
     status: null,
     doctor: {
-      photo: 'user',
+      photo: 'https://randomuser.me/api/portraits/thumb/women/95.jpg',
       name: 'dr Mike Brown',
       specialty: 'dentist'
     }

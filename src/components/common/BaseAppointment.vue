@@ -1,7 +1,7 @@
 <template>
   <div class="base-appointment list-item">
     <div class="base-appointment__content-wrapper">
-      <img :src="require(`../../assets/images/${appointment.doctor.photo}.png`)" alt="User image">
+      <img :src="appointment.doctor.photo" alt="User image">
       <div class="base-appointment__content">
         <span class="copy copy--large copy--bold">
           {{ appointment.doctor.name }}
