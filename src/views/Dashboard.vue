@@ -18,35 +18,35 @@
     <div class="dashboard__upper">
       <BaseBox title="Upcoming appointments">
         <DashboardAppointments
-          :data="appointments.list"
+          :data="appointments.list.value"
           @confirm="appointments.handleChangeAppointmentStatus($event, 'confirmed')"
           @reject="appointments.handleChangeAppointmentStatus($event, 'rejected')"
         ></DashboardAppointments>
       </BaseBox>
       <BaseBox title="Recent results">
         <DashboardResults
-            :data="results.currentResultsData"
-            :month="results.month"
-            :type="results.type"
-            @change-month="results.handleChangeMonth"
-            @change-type="results.handleChangeType"
+          :data="results.currentResultsData.value"
+          :month="results.month.value"
+          :type="results.type.value"
+          @change-month="results.handleChangeMonth"
+          @change-type="results.handleChangeType"
         ></DashboardResults>
       </BaseBox>
     </div>
     <div class="dashboard__lower">
       <BaseBox title="News">
         <DashboardNews
-            :data="news.list"
-            @open="news.handleOpenNewsModal"
+          :data="news.list.value"
+          @open="news.handleOpenNewsModal"
         />
       </BaseBox>
       <BaseBox title="Current prescriptions">
-        <DashboardPrescriptions :data="prescriptions.list" />
+        <DashboardPrescriptions :data="prescriptions.list.value" />
       </BaseBox>
       <BaseBox title="Notifications">
         <DashboardNotifications
-            :data="notifications.list"
-            @dismiss="notifications.handleNotificationsDismissal"
+          :data="notifications.list.value"
+          @dismiss="notifications.handleNotificationsDismissal"
         />
       </BaseBox>
     </div>

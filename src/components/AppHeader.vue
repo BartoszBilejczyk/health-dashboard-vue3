@@ -9,10 +9,10 @@
         class="modal"
       >
         <AppHeaderAppointmentModal
-          v-model:city="city"
-          v-model:specialty="specialty"
-          v-model:name="name"
-          v-model:date="date"
+          v-model:city="state.city"
+          v-model:specialty="state.specialty"
+          v-model:name="state.name"
+          v-model:date="state.date"
           @close="handleCloseModal"
           @submit="handleEmitAppointment"
         />
@@ -40,7 +40,8 @@
 </template>
 
 <script>
-  import { reactive, ref } from 'vue';
+  import { reactive } from 'vue';
+
   import AppHeaderAppointmentModal from './AppHeaderAppointmentModal';
   import BaseButton from './common/BaseButton';
   import axios from 'axios';
@@ -58,13 +59,12 @@
         user: {
           name: null,
           photo: null
-        }
+        },
+        city: null,
+        specialty: null,
+        name: null,
+        date: null
       });
-
-      const city = ref(null);
-      const specialty = ref(null);
-      const name = ref(null);
-      const date = ref(null);
 
       function handleCloseModal() {
         state.modalOpen = false;
@@ -80,9 +80,9 @@
 
       function handleEmitAppointment() {
         emit('submit-appointment', {
-          specialty: specialty.value,
-          name: name.value,
-          date: date.value
+          specialty: state.specialty,
+          name: state.name,
+          date: state.date
         });
 
         handleCloseModal();
@@ -97,10 +97,6 @@
 
       return {
         state,
-        city,
-        specialty,
-        name,
-        date,
         handleCloseModal,
         handleEmitAppointment,
         handleOpenAppointmentModal,

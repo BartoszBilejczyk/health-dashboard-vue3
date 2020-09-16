@@ -26,7 +26,7 @@
         </span>
         <IconCheckmark
           v-else
-          @click.native="$emit('confirm')"
+          @click="$emit('confirm')"
         />
       </div>
       <div>
@@ -38,7 +38,7 @@
         </span>
         <IconReject
           v-else
-          @click.native="$emit('reject')"
+          @click="$emit('reject')"
         />
       </div>
     </div>

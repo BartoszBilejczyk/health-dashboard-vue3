@@ -15,7 +15,7 @@
       </div>
       <IconChevronRight
         class="clickable"
-        @click.native="$emit('open', news)"
+        @click="$emit('open', news)"
       ></IconChevronRight>
     </div>
   </div>
