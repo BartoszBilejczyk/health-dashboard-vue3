@@ -28,7 +28,7 @@
       >
         Toggle preview only mode to enable/disable Teleport in Make an appointment
       </BaseButton>
-      Preview: {{ state.preview ? 'Yes' : 'No' }}
+      Teleport modal: {{ state.preview ? 'disabled' : 'enabled' }}
     </div>
     <div class="app-header__user">
       <img :src="state.user.photo" alt="User image">
@@ -60,10 +60,10 @@
           name: null,
           photo: null
         },
-        city: null,
-        specialty: null,
-        name: null,
-        date: null
+        city: '',
+        specialty: '',
+        name: '',
+        date: ''
       });
 
       function handleCloseModal() {
@@ -71,6 +71,10 @@
       }
 
       function handleOpenAppointmentModal() {
+        state.city = '';
+        state.specialty = '';
+        state.name = '';
+        state.date = '';
         state.modalOpen = true;
       }
 

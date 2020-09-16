@@ -54,13 +54,13 @@
 </template>
 
 <script>
-  import BaseBox from '../components/common/BaseBox';
-  import DashboardAppointments from '../components/dashboard/DashboardAppointments';
-  import DashboardNews from '../components/dashboard/DashboardNews';
-  import DashboardPrescriptions from '../components/dashboard/DashboardPrescriptions';
-  import DashboardNotifications from '../components/dashboard/DashboardNotifications';
-  import DashboardResults from '../components/dashboard/DashboardResults';
-  import DashboardNewsModal from '../components/dashboard/DashboardNewsModal';
+  import BaseBox from '@/components/common/BaseBox';
+  import DashboardAppointments from '@/components/dashboard/DashboardAppointments';
+  import DashboardNews from '@/components/dashboard/DashboardNews';
+  import DashboardPrescriptions from '@/components/dashboard/DashboardPrescriptions';
+  import DashboardNotifications from '@/components/dashboard/DashboardNotifications';
+  import DashboardResults from '@/components/dashboard/DashboardResults';
+  import DashboardNewsModal from '@/components/dashboard/DashboardNewsModal';
   import AppHeader from '@/components/AppHeader.vue';
 
   import { useAppointments } from '@/views/dashboard-appointments.setup';
