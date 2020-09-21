@@ -117,6 +117,10 @@
     padding: $ui-default-measure4x 70px;
   }
 
+  &__content {
+    height: 100%;
+  }
+
   &__header {
     height: 90px;
     width: 100%;
@@ -135,7 +139,8 @@
   }
 
   &__upper {
-    height: 55%;
+    // each has half of header substracted
+    height: calc(55% - 45px);
     padding-bottom: $ui-default-measure3x;
 
     > .base-box {
@@ -150,7 +155,8 @@
   }
 
   &__lower {
-    height: 45%;
+    // each has half of header substracted
+    height: calc(45% - 45px);
 
     > .base-box {
       &:first-of-type {

@@ -33,12 +33,12 @@
 
     &__main {
       width: calc(100vw - 100px);
+      background: $color-primary-background;
     }
 
     &__router-view {
       height: 100vh;
       width: 100%;
-      background: $color-primary-background;
     }
   }
 </style>
