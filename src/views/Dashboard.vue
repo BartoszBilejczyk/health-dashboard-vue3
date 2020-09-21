@@ -3,43 +3,43 @@
     <Suspense>
       <div class="dashboard__content">
         <AppHeader
-            class="dashboard__header"
-            @submit-appointment="appointments.handleSubmitAppointment"
+          class="dashboard__header"
+          @submit-appointment="appointments.handleSubmitAppointment"
         ></AppHeader>
         <Teleport to="#news-modal">
           <div
-              v-if="news.state.modalOpen"
-              class="modal"
+            v-if="news.state.modalOpen"
+            class="modal"
           >
             <DashboardNewsModal
-                :data="news.state.activeNews"
-                @close="news.handleCloseNewsModal"
+              :data="news.state.activeNews"
+              @close="news.handleCloseNewsModal"
             />
           </div>
         </Teleport>
         <div class="dashboard__upper">
           <BaseBox title="Upcoming appointments">
             <DashboardAppointments
-                :data="appointments.list.value"
-                @confirm="appointments.handleChangeAppointmentStatus($event, 'confirmed')"
-                @reject="appointments.handleChangeAppointmentStatus($event, 'rejected')"
+              :data="appointments.list.value"
+              @confirm="appointments.handleChangeAppointmentStatus($event, 'confirmed')"
+              @reject="appointments.handleChangeAppointmentStatus($event, 'rejected')"
             ></DashboardAppointments>
           </BaseBox>
           <BaseBox title="Recent results">
             <DashboardResults
-                :data="results.currentResultsData.value"
-                :month="results.month.value"
-                :type="results.type.value"
-                @change-month="results.handleChangeMonth"
-                @change-type="results.handleChangeType"
+              :data="results.currentResultsData.value"
+              :month="results.month.value"
+              :type="results.type.value"
+              @change-month="results.handleChangeMonth"
+              @change-type="results.handleChangeType"
             ></DashboardResults>
           </BaseBox>
         </div>
         <div class="dashboard__lower">
           <BaseBox title="News">
             <DashboardNews
-                :data="news.list.value"
-                @open="news.handleOpenNewsModal"
+              :data="news.list.value"
+              @open="news.handleOpenNewsModal"
             />
           </BaseBox>
           <BaseBox title="Current prescriptions">
@@ -47,8 +47,8 @@
           </BaseBox>
           <BaseBox title="Notifications">
             <DashboardNotifications
-                :data="notifications.list.value"
-                @dismiss="notifications.handleNotificationsDismissal"
+              :data="notifications.list.value"
+              @dismiss="notifications.handleNotificationsDismissal"
             />
           </BaseBox>
         </div>
