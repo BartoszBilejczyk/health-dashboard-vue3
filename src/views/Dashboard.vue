@@ -1,62 +1,57 @@
 <template>
   <div class="dashboard">
-    <Suspense>
-      <div class="dashboard__content">
-        <AppHeader
-            class="dashboard__header"
-            @submit-appointment="appointments.handleSubmitAppointment"
-        ></AppHeader>
-        <Teleport to="#news-modal">
-          <div
-              v-if="news.state.modalOpen"
-              class="modal"
-          >
-            <DashboardNewsModal
-                :data="news.state.activeNews"
-                @close="news.handleCloseNewsModal"
-            />
-          </div>
-        </Teleport>
-        <div class="dashboard__upper">
-          <BaseBox title="Upcoming appointments">
-            <DashboardAppointments
-                :data="appointments.list.value"
-                @confirm="appointments.handleChangeAppointmentStatus($event, 'confirmed')"
-                @reject="appointments.handleChangeAppointmentStatus($event, 'rejected')"
-            ></DashboardAppointments>
-          </BaseBox>
-          <BaseBox title="Recent results">
-            <DashboardResults
-                :data="results.currentResultsData.value"
-                :month="results.month.value"
-                :type="results.type.value"
-                @change-month="results.handleChangeMonth"
-                @change-type="results.handleChangeType"
-            ></DashboardResults>
-          </BaseBox>
+    <div class="dashboard__content">
+      <AppHeader
+          class="dashboard__header"
+          @submit-appointment="appointments.handleSubmitAppointment"
+      ></AppHeader>
+      <Teleport to="#news-modal">
+        <div
+            v-if="news.state.modalOpen"
+            class="modal"
+        >
+          <DashboardNewsModal
+              :data="news.state.activeNews"
+              @close="news.handleCloseNewsModal"
+          />
         </div>
-        <div class="dashboard__lower">
-          <BaseBox title="News">
-            <DashboardNews
-                :data="news.list.value"
-                @open="news.handleOpenNewsModal"
-            />
-          </BaseBox>
-          <BaseBox title="Current prescriptions">
-            <DashboardPrescriptions :data="prescriptions.list.value" />
-          </BaseBox>
-          <BaseBox title="Notifications">
-            <DashboardNotifications
-                :data="notifications.list.value"
-                @dismiss="notifications.handleNotificationsDismissal"
-            />
-          </BaseBox>
-        </div>
+      </Teleport>
+      <div class="dashboard__upper">
+        <BaseBox title="Upcoming appointments">
+          <DashboardAppointments
+              :data="appointments.list.value"
+              @confirm="appointments.handleChangeAppointmentStatus($event, 'confirmed')"
+              @reject="appointments.handleChangeAppointmentStatus($event, 'rejected')"
+          ></DashboardAppointments>
+        </BaseBox>
+        <BaseBox title="Recent results">
+          <DashboardResults
+              :data="results.currentResultsData.value"
+              :month="results.month.value"
+              :type="results.type.value"
+              @change-month="results.handleChangeMonth"
+              @change-type="results.handleChangeType"
+          ></DashboardResults>
+        </BaseBox>
       </div>
-      <template #fallback>
-        <div class="dashboard__loading">Loading...</div>
-      </template>
-    </Suspense>
+      <div class="dashboard__lower">
+        <BaseBox title="News">
+          <DashboardNews
+              :data="news.list.value"
+              @open="news.handleOpenNewsModal"
+          />
+        </BaseBox>
+        <BaseBox title="Current prescriptions">
+          <DashboardPrescriptions :data="prescriptions.list.value" />
+        </BaseBox>
+        <BaseBox title="Notifications">
+          <DashboardNotifications
+              :data="notifications.list.value"
+              @dismiss="notifications.handleNotificationsDismissal"
+          />
+        </BaseBox>
+      </div>
+    </div>
   </div>
 </template>
 

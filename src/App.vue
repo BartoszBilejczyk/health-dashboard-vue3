@@ -2,18 +2,41 @@
   <div id="app" class="app">
     <AppNav class="app__nav"></AppNav>
     <main class="app__main">
-      <router-view class="app__router-view"/>
+      <router-view v-slot="{ Component }" class="app__router-view">
+        <Suspense
+            :onFallback="state.isLoaded = false"
+            :onResolve="state.isLoaded = true"
+        >
+          <template v-if="state.isLoaded">
+            <component :is="Component" />
+          </template>
+          <template v-else>
+            <div class="dashboard__loading">Loading...</div>
+          </template>
+        </Suspense>
+      </router-view>
     </main>
   </div>
 </template>
 
 <script>
+  import { reactive } from 'vue';
+
   import AppNav from '@/components/AppNav.vue';
 
   export default {
     name: 'App',
     components: {
       AppNav
+    },
+    setup() {
+      const state = reactive({
+        isLoaded: false
+      });
+
+      return {
+        state
+      };
     }
   };
 </script>
